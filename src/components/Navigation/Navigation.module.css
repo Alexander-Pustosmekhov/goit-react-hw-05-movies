@@ -1,0 +1,19 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 100%;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.home {
+  margin: 10px;
+  text-decoration: none;
+}
+
+.movies {
+  margin: 10px;
+  text-decoration: none;
+}
