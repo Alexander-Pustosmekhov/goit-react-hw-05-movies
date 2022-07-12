@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { FethInformationMovies } from 'components/service/FetchMovies';
 import { constants } from 'helpers/constants';
 
@@ -26,11 +26,7 @@ export default function MoviesId() {
       <div>
         <img
           width="300"
-          src={`${
-            poster_path !== null
-              ? IMG_URL + '/w500' + poster_path
-              : 'https://upload.wikimedia.org/wikipedia/commons/b/ba/No_image_available_400_x_600.svg'
-          }`}
+          src={`${poster_path ? IMG_URL + '/w500' + poster_path : null}`}
           alt={`${title !== '' ? title : 'No info!'}`}
         />
         <h2>{title}</h2>
@@ -58,6 +54,7 @@ export default function MoviesId() {
             <Link to={reviews}>Reviews</Link>
           </li>
         </ul>
+        <Outlet />
       </div>
     </>
   );

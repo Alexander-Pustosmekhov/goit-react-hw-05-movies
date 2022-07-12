@@ -5,6 +5,7 @@ import Home from './Home/Home';
 import Movies from './Movies/Movies';
 import MoviesId from './Movies/MoviesId/MoviesId';
 import Cast from './Movies/Cast/Cast';
+import Reviews from './Movies/Cast/Reviews/Reviews';
 
 const { home, movies, movieId, cast, reviews } = constants;
 
@@ -17,7 +18,7 @@ export const App = () => {
         <Route path={movies} element={<Movies />} />
         <Route path={`${movies}/${movieId}`} element={<MoviesId />}>
           <Route path={cast} element={<Cast />} />
-          <Route path={reviews} />
+          <Route path={reviews} element={<Reviews />} />
         </Route>
       </Routes>
     </div>

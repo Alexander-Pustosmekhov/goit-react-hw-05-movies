@@ -17,10 +17,10 @@ export default function HomeList() {
   return (
     <>
       <ul>
-        {post.map(({ title, id }) => {
+        {post.map(({ original_name, title, id }) => {
           return (
             <li key={id}>
-              <Link to={`${movies}/${id}`}>{title}</Link>
+              <Link to={`${movies}/${id}`}>{original_name ?? title}</Link>
             </li>
           );
         })}
