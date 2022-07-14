@@ -23,42 +23,16 @@ export const App = () => {
   return (
     <div>
       <Navigation />
-      <Routes>
-        <Route path={home} element={<Home />}></Route>
-        <Route
-          path={movies}
-          element={
-            <Suspense fallback={<div>Loading...</div>}>
-              <Movies />
-            </Suspense>
-          }
-        />
-        <Route
-          path={`${movies}/${movieId}`}
-          element={
-            <Suspense fallback={<div>Loading...</div>}>
-              <MoviesId />
-            </Suspense>
-          }
-        >
-          <Route
-            path={cast}
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <Cast />
-              </Suspense>
-            }
-          />
-          <Route
-            path={reviews}
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <Reviews />
-              </Suspense>
-            }
-          />
-        </Route>
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path={home} element={<Home />}></Route>
+          <Route path={movies} element={<Movies />} />
+          <Route path={`${movies}/${movieId}`} element={<MoviesId />}>
+            <Route path={cast} element={<Cast />} />
+            <Route path={reviews} element={<Reviews />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </div>
   );
 };
