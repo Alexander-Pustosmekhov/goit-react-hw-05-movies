@@ -1,11 +1,21 @@
+import { lazy, Suspense } from 'react';
 import Navigation from './Navigation/Navigation';
 import { Routes, Route } from 'react-router-dom';
 import { constants } from 'helpers/constants';
 import Home from './Home/Home';
-import Movies from './Movies/Movies';
-import MoviesId from './Movies/MoviesId/MoviesId';
-import Cast from './Movies/Cast/Cast';
-import Reviews from './Movies/Cast/Reviews/Reviews';
+
+const Movies = lazy(() =>
+  import('./Movies/Movies' /* webpackChunkName: "Movies" */)
+);
+const MoviesId = lazy(() =>
+  import('./Movies/MoviesId/MoviesId' /* webpackChunkName: "MoviesId" */)
+);
+const Cast = lazy(() =>
+  import('./Movies/Cast/Cast' /* webpackChunkName: "Cast" */)
+);
+const Reviews = lazy(() =>
+  import('./Movies/Reviews/Reviews' /* webpackChunkName: "Reviews" */)
+);
 
 const { home, movies, movieId, cast, reviews } = constants;
 
@@ -15,10 +25,38 @@ export const App = () => {
       <Navigation />
       <Routes>
         <Route path={home} element={<Home />}></Route>
-        <Route path={movies} element={<Movies />} />
-        <Route path={`${movies}/${movieId}`} element={<MoviesId />}>
-          <Route path={cast} element={<Cast />} />
-          <Route path={reviews} element={<Reviews />} />
+        <Route
+          path={movies}
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Movies />
+            </Suspense>
+          }
+        />
+        <Route
+          path={`${movies}/${movieId}`}
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <MoviesId />
+            </Suspense>
+          }
+        >
+          <Route
+            path={cast}
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Cast />
+              </Suspense>
+            }
+          />
+          <Route
+            path={reviews}
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Reviews />
+              </Suspense>
+            }
+          />
         </Route>
       </Routes>
     </div>

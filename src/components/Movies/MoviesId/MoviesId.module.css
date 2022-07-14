@@ -1,0 +1,35 @@
+.button {
+  border: none;
+  background-color: transparent;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: orange;
+}
+
+.movieId {
+  margin-left: 10px;
+}
+
+.list {
+  list-style: none;
+}
+
+.itemTitle {
+  color: orange;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  color: orange;
+}
+
+.listLink {
+  list-style: none;
+}

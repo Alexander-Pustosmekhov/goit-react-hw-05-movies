@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FethPopularMovies } from 'components/service/FetchMovies';
 import { constants } from 'helpers/constants';
+import s from './HomeList.module.css';
 
-const { movies } = constants;
+const { movies, home } = constants;
 
 export default function HomeList() {
   const [post, setPost] = useState([]);
@@ -16,11 +17,17 @@ export default function HomeList() {
 
   return (
     <>
-      <ul>
+      <ul className={s.list}>
         {post.map(({ original_name, title, id }) => {
           return (
             <li key={id}>
-              <Link to={`${movies}/${id}`}>{original_name ?? title}</Link>
+              <Link
+                className={s.link}
+                to={`${movies}/${id}`}
+                state={{ home, from: home }}
+              >
+                {original_name ?? title}
+              </Link>
             </li>
           );
         })}

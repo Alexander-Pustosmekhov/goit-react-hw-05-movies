@@ -1,0 +1,15 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.item {
+  width: calc((100% - 30px) / 5);
+}
+
+.text {
+  font-size: 12px;
+  margin-top: 0;
+}

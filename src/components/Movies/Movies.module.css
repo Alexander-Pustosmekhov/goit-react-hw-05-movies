@@ -1,0 +1,25 @@
+.input {
+  margin-left: 10px;
+}
+
+.button {
+  background-color: teal;
+  border: none;
+  margin-left: 5px;
+  padding: 3px;
+  border-radius: 3px;
+  color: white;
+}
+
+.list {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  color: orange;
+}

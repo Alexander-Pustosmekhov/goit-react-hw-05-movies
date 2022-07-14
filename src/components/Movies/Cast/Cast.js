@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { FetchCreditsMovie } from 'components/service/FetchMovies';
 import { useState, useEffect } from 'react';
+import s from './Cast.module.css';
 
 export default function Cast() {
   const params = useParams();
@@ -21,10 +22,10 @@ export default function Cast() {
     <>
       {cast?.length > 0 ? (
         <>
-          <ul>
+          <ul className={s.list}>
             {cast.splice(0, 10).map(({ character, name, profile_path, id }) => {
               return (
-                <li key={id}>
+                <li key={id} className={s.item}>
                   <img
                     src={
                       profile_path
@@ -32,10 +33,10 @@ export default function Cast() {
                         : 'https://upload.wikimedia.org/wikipedia/commons/b/ba/No_image_available_400_x_600.svg'
                     }
                     alt={name}
-                    width="300"
+                    width="200"
                   />
                   <h3>{name}</h3>
-                  <p>Character: {character}</p>
+                  <p className={s.text}>Character: {character}</p>
                 </li>
               );
             })}
